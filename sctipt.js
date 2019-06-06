@@ -1,39 +1,49 @@
-let imagelist = ["images/img1.jpg","images/img2.jpg","images/img3.jpg","images/img4.jpg","images/img5.jpg"]
-let start = document.getElementById("start")
-let stop = document.getElementById("stop")
-start.addEventListener("click", slidshow)
-
-function slidshow(){
-    start.style.visibility = "hidden"
-    stop.style.visibility = "visible"
-    stop.addEventListener("click", stopSlide)    
-    let imgNumber = 0
-    let div = document.getElementById("slidshow")
-    let image = document.createElement("img")
-    image.src = imagelist[0]
-    div.appendChild(image)
-    let myInterval = setInterval(changeImage,3000)
-    function changeImage(){
-        if (imgNumber<imagelist.length-1){
-            imgNumber++
-            image.src = imagelist[imgNumber]
-        } else{
-            
-            clearInterval(myInterval)
-            div.removeChild(image)
-            
-        }
-
-    }
-    function stopSlide(){
-        clearInterval(myInterval)
-          div.removeChild(image)
-          start.style.visibility = "visible"
-    stop.style.visibility = "hidden" 
-    }
+let addButton = document.getElementById("addButton")
+let input = document.getElementById("input")
+addButton.addEventListener("click", addElement)
+input.addEventListener("keypress",addElement)
+function addElement(e){
     
-    
+    if(e.type === "click" || e.keyCode === 13){
+    console.log(e)  
+       
+    let element = input.value
 
-  
+    if(element === ""){
+        alert("add something")
+    } else {
+        addElement(element)
+    }
+    document.getElementById("input").value = ""
+}
+function addElement(newElement){
+    let list = document.getElementById("toDoElements")
+    let element = document.createElement("li")
+    element.innerHTML = newElement
+    let remove = document.createElement("button")
+    remove.innerHTML = "X"
+    remove.addEventListener("click",removeElement);
+    let complete = document.createElement("button")
+    complete.innerHTML = "V"
+    complete.addEventListener("click",completeElement)
+    element.appendChild(complete)
+    element.appendChild(remove)
+    list.insertBefore(element,list.childNodes[0])
+    function removeElement(){
+        let item =  this.parentNode
+        let parent  = item.parentNode;   
+        parent.removeChild(item);    
+    }
+    function completeElement(){
+        let item = this.parentNode
+        let parent = item.parentNode
+        parent.classList.add("done")
+        
+        
+        
+        
+    }
 }
 
+    
+}
