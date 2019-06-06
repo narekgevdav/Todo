@@ -1,0 +1,13 @@
+h1{
+    text-align: center
+}
+#input{
+    width: 80%    
+        
+}
+#button{
+    margin: 0px 10px 10px 20px
+}
+#toDoElements{
+    text-decoration-color: blue
+}
