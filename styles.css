@@ -9,5 +9,8 @@ h1{
     margin: 0px 10px 10px 20px
 }
 #toDoElements{
-    text-decoration-color: blue
+    font-size: large
+}
+.done{
+    color: green
 }
