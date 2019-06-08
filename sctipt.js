@@ -37,7 +37,7 @@ function addElement(newElement){
     function completeElement(){
         let item = this.parentNode
         let parent = item.parentNode
-        parent.classList.add("done")
+        item.classList.add("done")
         
         
         
